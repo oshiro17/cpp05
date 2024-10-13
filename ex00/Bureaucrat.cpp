@@ -14,9 +14,9 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Bureaucrat Destructor for " << this->getName() << " called" << std::endl;
 }
 const char*	Bureaucrat::GradeTooHighException::what(void) const throw() {
-    return ("Grade too height");
+    return ("Grade too high");
 }
-const char*	Bureaucrat::GradeTooHighException::what(void) const throw() {
+const char*	Bureaucrat::GradeTooLowException::what(void) const throw() {
     return ("Grade too low");
 }
 const std::string	Bureaucrat::getName(void)const
@@ -27,14 +27,17 @@ int	Bureaucrat::getGrade(void)const
 {
 	return (this->grade_);
 }
-vvoid Bureaucrat::decrementGrade(void) {
+void	Bureaucrat::decrementGrade(void) {
+
     std::cout << "<Bureaucrat> decrementGrade() called for " << this->name_ << std::endl;
-    this->grade_++;
+	this->grade_++;
     if (this->grade_ > 150)
         throw Bureaucrat::GradeTooLowException();
-}
 
-void Bureaucrat::incrementGrade(void) {
+
+}
+void	Bureaucrat::incrementGrade(void) {
+
     std::cout << "<Bureaucrat> incrementGrade() called for " << this->name_ << std::endl;
     this->grade_--;
     if (this->grade_ < 1)
@@ -49,9 +52,9 @@ Bureaucrat::Bureaucrat(const Bureaucrat &src): name_(src.getName()), grade_(src.
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 {
 	std::cout << "Bureaucrat Assignation operator called" << std::endl;
-	if (this->grade_ > 150)
+	if (src.grade_ > 150)
 		throw Bureaucrat::GradeTooLowException();
-	else if (this->grade_ < 1)
+	else if (src.grade_ < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (this != &src) {
         // constメンバでない部分だけ代入

@@ -27,21 +27,18 @@ int	Bureaucrat::getGrade(void)const
 {
 	return (this->grade_);
 }
-void	Bureaucrat::decrementGrade(void) {
-
-    std::cout << "<Bureaucrat> decrementGrade() called for " << this->name_ << std::endl;
-	this->grade_--;
-    if (this->grade_ < 1)
-        throw Bureaucrat::GradeTooLowException();
-
-
-}
-void	Bureaucrat::incrementGrade(void) {
-
+vvoid Bureaucrat::decrementGrade(void) {
     std::cout << "<Bureaucrat> decrementGrade() called for " << this->name_ << std::endl;
     this->grade_++;
     if (this->grade_ > 150)
         throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::incrementGrade(void) {
+    std::cout << "<Bureaucrat> incrementGrade() called for " << this->name_ << std::endl;
+    this->grade_--;
+    if (this->grade_ < 1)
+        throw Bureaucrat::GradeTooHighException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &src): name_(src.getName()), grade_(src.getGrade())

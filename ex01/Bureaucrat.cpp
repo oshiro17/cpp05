@@ -58,7 +58,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 	if (this != &src) {
         // constメンバでない部分だけ代入
 		this->grade_ = src.grade_;
-    	// const_cast<std::string&>(this->name_) = src.name_;
+    	const_cast<std::string&>(this->name_) = src.name_;
 	}
 	return *this;
 }

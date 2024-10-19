@@ -16,7 +16,7 @@ Form::Form(const std::string& name, \
 }
 
 Form::Form(const Form& src) :name_(src.getName()), signed_(src.getSigned()),grade_required_to_exec_ \
-(src.getGradeRequiredToExec()),grade_required_to_sign_(src.getGradeRequiredToSign());
+(src.getGradeRequiredToExec()),grade_required_to_sign_(src.getGradeRequiredToSign())
 {
     std::cout << "Form  Copy Constructor called for " << this->name_ << std::endl;
 
@@ -35,9 +35,9 @@ Form::Form(const Form& src) :name_(src.getName()), signed_(src.getSigned()),grad
 Form &Form::operator=(const Form& src)
 {
     std::cout << "Form Assignation operator called" << std::endl;
-    if (src.getGradeRequiredToExec()<1 || sec.getGradeRequiredToSign()<1)
+    if (src.getGradeRequiredToExec()<1 || src.getGradeRequiredToSign()<1)
         throw GradeTooHighException();
-    if (src.getGradeRequiredToExec()>150 || sec.getGradeRequiredToSign()>150)
+    if (src.getGradeRequiredToExec()>150 || src.getGradeRequiredToSign()>150)
         throw GradeTooLowException();
     if (this != &src)
     {
@@ -50,7 +50,7 @@ Form &Form::operator=(const Form& src)
 
 }
 
-Form:~Form()
+Form::~Form()
 {
 	std::cout << "Form Destructor for " << this->getName() << " called" << std::endl;
 }

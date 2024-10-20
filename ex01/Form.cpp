@@ -79,9 +79,7 @@ void	Form::beSigned(const Bureaucrat& bc) {
 	std::cout << this \
 		<< "<Form> beSigned() called (" \
 		<< this->name_ << std::endl;
-	if (this->grade_to_sign_ < bc.getGrade())
+	if (this->signed_== false &&this->grade_required_to_sign_< bc.getGrade())
 		throw Form::GradeTooLowException();
-	else if (this->signed_ == true)
-		throw Form::AlreadySignedException();
 	this->signed_ = true;
 }

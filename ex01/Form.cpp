@@ -2,8 +2,9 @@
 
 Form::Form(const std::string& name, \
     const int grade_required_to_sign, const int grade_required_to_exec) \
-    : name_(name), grade_required_to_sign_(grade_required_to_sign), \
-    grade_required_to_exec_(grade_required_to_exec), signed_(false)
+    : grade_required_to_sign_(grade_required_to_sign), \
+      grade_required_to_exec_(grade_required_to_exec), \
+      name_(name), signed_(false)
 {
     std::cout << "Form  Default Constructor called for " << this->name_ << std::endl;
 
@@ -15,8 +16,10 @@ Form::Form(const std::string& name, \
     }
 }
 
-Form::Form(const Form& src) :name_(src.getName()), signed_(src.getSigned()),grade_required_to_exec_ \
-(src.getGradeRequiredToExec()),grade_required_to_sign_(src.getGradeRequiredToSign())
+Form::Form(const Form& src) : grade_required_to_sign_(src.getGradeRequiredToSign()), \
+      grade_required_to_exec_(src.getGradeRequiredToExec()), \
+      name_(src.getName()), \
+      signed_(src.getSigned())
 {
     std::cout << "Form  Copy Constructor called for " << this->name_ << std::endl;
 
@@ -25,9 +28,6 @@ Form::Form(const Form& src) :name_(src.getName()), signed_(src.getSigned()),grad
     }
     if (this->grade_required_to_sign_ > 150 || this->grade_required_to_exec_ > 150) {
         throw Form::GradeTooLowException();
-    }
-    if (this!= &src){
-
     }
 
 }
@@ -41,10 +41,10 @@ Form &Form::operator=(const Form& src)
         throw GradeTooLowException();
     if (this != &src)
     {
-        const_cast<std::string&>this->name_ = src.name_:
+        const_cast<std::string&>(this->name_) = src.name_;
         this->signed_ = src.signed_;
-        const_cast<int&>this->grade_required_to_exec_ = src.grade_required_to_exec_;
-        const_cast<int&>this->grade_required_to_sign_ = src.grade_required_to_sign_;
+        const_cast<int&>(this->grade_required_to_exec_) = src.grade_required_to_exec_;
+        const_cast<int&>(this->grade_required_to_sign_) = src.grade_required_to_sign_;
     }
     return(*this);
 
@@ -62,4 +62,26 @@ const char*	Form::GradeTooLowException::what(void) const throw() {
     return ("Grade too low");
 }
 
-
+const std::string&	Form::getName(void) const{
+    return(this->name_);
+}
+bool    Form::getSigned(void) const{
+    return(this->signed_);
+}
+int Form::getGradeRequiredToSign(void)const
+{
+    return(this->grade_required_to_sign_);
+}
+int Form::getGradeRequiredToExec(void)const{
+    return(this->grade_required_to_exec_);
+}
+void	Form::beSigned(const Bureaucrat& bc) {
+	std::cout << this \
+		<< "<Form> beSigned() called (" \
+		<< this->name_ << std::endl;
+	if (this->grade_to_sign_ < bc.getGrade())
+		throw Form::GradeTooLowException();
+	else if (this->signed_ == true)
+		throw Form::AlreadySignedException();
+	this->signed_ = true;
+}

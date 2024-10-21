@@ -82,3 +82,4 @@ int	Bureaucrat::signForm(Form& form) {
 	std::cout << this->name_ << " signed " << form.getName() << std::endl;
 	return (1);
 }
+

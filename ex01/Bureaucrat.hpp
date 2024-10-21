@@ -6,7 +6,7 @@
 # include <iostream>
 # include <string>
 # include "Form.hpp"
-
+class Form;
 class Bureaucrat
 {
 public:
@@ -36,7 +36,7 @@ public:
 	int getGrade(void) const;
 	void incrementGrade(void);
 	void decrementGrade(void);
-	int signHome(Form &form);
+	int signForm(Form& form);
 
 private:
 	const std::string name_;

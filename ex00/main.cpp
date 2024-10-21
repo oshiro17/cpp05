@@ -77,6 +77,8 @@ bool case_decrement_low() {
 }
 
 int main() {
+    Bureaucrat b("b",35);
+    std::cout<<b<<std::endl;
     if (!case_regular())
         std::cout << "No exception occurred" << std::endl;
     if (!case_high())

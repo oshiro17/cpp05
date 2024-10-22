@@ -22,10 +22,19 @@ public:
 	public:
 		virtual const char* what() const throw() /*override*/; 
 	};
+
+  	class FormSignedException: public std::exception {
+		public:
+			virtual const char *what() const throw();
+	};
+	class FormNotSignedException: public std::exception {
+		public:
+			virtual const char *what() const throw();
+	};
     AForm(const std::string& name, const int grade_required_to_sign, const int grade_required_to_exec);
     AForm(const AForm& src);
     AForm&	operator=(const AForm& rhs);
-    ~AForm(void);
+    virtual ~AForm(void);
 	const std::string&	getName(void) const;
     bool    getSigned(void) const;
     int getGradeRequiredToSign(void)const;

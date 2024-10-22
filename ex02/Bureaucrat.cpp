@@ -55,7 +55,7 @@ std::ostream&	operator<<(std::ostream& stream, const Bureaucrat& bureaucrat) {
 	return (stream);
 }
 
-void	Bureaucrat::signForm(Form& form) {
+void	Bureaucrat::signForm(AForm& form) {
 	try {
 		form.beSigned(*this);
 	}
@@ -68,3 +68,13 @@ void	Bureaucrat::signForm(Form& form) {
 	return ;
 }
 
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try{
+		form.execute(*this);
+	}
+	catch(std::exception &e){
+		std::cout << this->name_ << " couldn't execute " << form.getName() 
+		<< " because " << e.what() << std::endl;
+	}
+}

@@ -86,5 +86,7 @@ std::ostream& operator<<(std::ostream& os, const AForm& aform) {
 }
 
  void AForm::execute(const Bureaucrat & executor)const{
+    (void)executor;
     return;
+
 }

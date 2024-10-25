@@ -1,3 +1,5 @@
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
@@ -9,9 +11,10 @@ public:
 	PresidentialPardonForm(const PresidentialPardonForm &other);
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 	~PresidentialPardonForm();
-	void executeInDerived() const;
+	void execute(Bureaucrat const & executor) const;
 private:
     static const int grade_to_sign_=25;
     static const int grade_to_exec_=5;
     std::string target_;
-}
+};
+#endif

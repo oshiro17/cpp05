@@ -2,9 +2,16 @@
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 
-
+#include <cstdlib>  // rand, srand
+#include <ctime>   
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
-:AForm("RobotomyRequestForm",grade_to_sign_,grade_to_exec_),target_(target){}
+:AForm("RobotomyRequestForm",grade_to_sign_,grade_to_exec_),target_(target){
+     static bool seeded = false;  
+    if (!seeded) {
+        std::srand(std::time(0)); 
+        seeded = true;
+    }
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
     : AForm(other), target_(other.target_) {
@@ -31,7 +38,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
         else
         {
             std::cout << target_ << "!!!Drilling noises!!!!!! Bzzz Prrrrr Brr" << std::endl;
-            //  std::cout << "現在のエポック秒: " << std::rand() << std::endl;
+
 
             if (std::rand() % 2==0)
                  std::cout << target_ << " has been robotomized successfully!" << std::endl;

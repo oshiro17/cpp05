@@ -5,8 +5,14 @@
 int main()
 {
     PresidentialPardonForm form("Trump");
-    Bureaucrat b("bbb",2);
+    Bureaucrat b("bbb",30);
 
+    try{
     form.beSigned(b);
     form.execute(b);
+    }
+    catch(const AForm::GradeTooLowException& e)
+    {
+     std::cerr << "Failed to sign the form: " << e.what() << std::endl;
+    }
 };

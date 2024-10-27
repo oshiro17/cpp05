@@ -2,7 +2,7 @@
 NAME = bureaucrat
 
 # ソースファイル一覧
-SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp
 
 # フラグ
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I./include

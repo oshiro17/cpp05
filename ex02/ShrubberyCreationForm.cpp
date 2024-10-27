@@ -29,7 +29,22 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
         else if (executor.getGrade() > getGradeRequiredToExec())
             throw GradeTooLowException();
         else
-            std::cout << target_ << " has been pardoned by Zaphod Beeblebrox!" << std::endl;
+        {
+            std::ofstream file(target_ + "_shrubbery");
+            if (file.is_open()) {
+                file << "       _-_" << std::endl;
+                file << "    /~~   ~~\\" << std::endl;
+                file << " /~~         ~~\\" << std::endl;
+                file << "{               }" << std::endl;
+                file << " \\  _-     -_  /" << std::endl;
+                file << "   ~  \\\\ //  ~" << std::endl;
+                file << "_- -   | | _- _" << std::endl;
+                file << "  _ -  | |   -_" << std::endl;
+                file << "      // \\\\" << std::endl;
+                file.close();
+                std::cout << "Shrubbery created in " << target_ + "_shrubbery" << std::endl;
+            }
+        }
     }
     catch (std::exception & e)
     {

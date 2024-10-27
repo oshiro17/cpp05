@@ -2,7 +2,7 @@
 NAME = bureaucrat
 
 # ソースファイル一覧
-SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 # フラグ
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
@@ -21,6 +21,7 @@ clean:
 
 fclean: clean
 	-rm -f $(NAME)
+	-rm -f *_shrubbery 
 
 re: fclean all
 

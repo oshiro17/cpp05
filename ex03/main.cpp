@@ -3,19 +3,23 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
-    ShrubberyCreationForm form("Trump");
+    Intern  someRandomIntern;
+    AForm*   form;
+    form = someRandomIntern.makeForm("robotomy request", "Bender");
+    
     Bureaucrat b("bbb",2);
 
     try{
-    form.beSigned(b);
-    form.execute(b);
-    form.execute(b);
-    form.execute(b);
-    form.execute(b);
-    form.execute(b);
+    form->beSigned(b);
+    form->execute(b);
+    form->execute(b);
+    form->execute(b);
+    form->execute(b);
+    form->execute(b);
     }
     catch(const AForm::GradeTooLowException& e)
     {

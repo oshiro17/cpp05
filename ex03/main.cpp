@@ -25,4 +25,5 @@ int main()
     {
      std::cerr << "Failed to sign the form: " << e.what() << std::endl;
     }
+    delete form;
 };
